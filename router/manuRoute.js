@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const manu = require("../models/manu");
 
+//route to create a new manu item
 router.post("/manu", async (req, res) => {
   try {
     let body = req.body;
@@ -15,6 +16,7 @@ router.post("/manu", async (req, res) => {
   }
 });
 
+//route to get all manu items
 router.get("/manu", async (req, res) => {
   try {
     let data = await manu.find();
@@ -27,6 +29,7 @@ router.get("/manu", async (req, res) => {
   }
 });
 
+//route to get manu items by test type
 router.get("/manu/:test", async (req, res) => {
   try {
     let testType = req.params.test;
@@ -45,6 +48,7 @@ router.get("/manu/:test", async (req, res) => {
   }
 });
 
+//route to update manu item by id
 router.put("/manu/:id", async (req, res) => {
   try {
     let userId = req.params.id;
@@ -63,6 +67,7 @@ router.put("/manu/:id", async (req, res) => {
   }
 });
 
+//route to delete manu item by id
 router.delete("/manu/:id", async (req, res) => {
   try {
     let manuId = req.params.id;
