@@ -2,6 +2,7 @@ let express = require("express");
 let app = express();
 const bodyParser = require("body-parser");
 const dbConnection = require("./db");
+require('dotenv').config();
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
