@@ -7,6 +7,12 @@ require('dotenv').config();
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
+const userLogs = (req, res, next) => {
+    console.log(`[${new Date().toLocaleString()}] ${req.originalUrl}`);
+    next();
+}
+app.use(userLogs)
+
 
 //importing routes
 const personRoute = require('./router/personRoute')
