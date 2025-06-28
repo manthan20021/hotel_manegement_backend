@@ -2,6 +2,7 @@ let express = require("express");
 let app = express();
 const bodyParser = require("body-parser");
 const dbConnection = require("./db");
+const passport = require('./auth');
 require('dotenv').config();
 
 // Middleware to parse JSON bodies
@@ -13,6 +14,10 @@ const userLogs = (req, res, next) => {
 }
 app.use(userLogs)
 
+// Middleware for authentication
+app.use(passport.initialize());
+let locelAuthMiddleware = passport.authenticate('local', {session: false})
+
 
 //importing routes
 const personRoute = require('./router/personRoute')
@@ -20,8 +25,24 @@ const manuRoute = require('./router/manuRoute')
 
 //using routes
 app.use('/', personRoute)
-app.use('/', manuRoute)
+app.use('/', locelAuthMiddleware, manuRoute)
 
+
+//home server route
+app.get('/',  async(req, res)=>{
+  try {
+    res.json({
+      message: "wollcome to our page"
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "internal server error",
+      error: error
+    })
+    
+  }
+})
 
 // Starting the server and connecting to the database
     dbConnection().then(() => {
