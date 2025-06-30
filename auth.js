@@ -15,8 +15,6 @@ passport.use(
       }
       // Import and comper comparePassword from the employ model
 
-      require("./models/employ").comparePassword;
-
       const isMatch = await user.comparePassword(password);
       if (!isMatch) {
         return done(null, false, { message: "Incorrect password" });
