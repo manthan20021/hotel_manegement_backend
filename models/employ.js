@@ -67,5 +67,7 @@ EmploySchema.method.comparePassword = async function(candidetPassword) {
     }
 }
 
+
 const employ = mongoose.model('employ', EmploySchema)
 module.exports = employ;
+module.exports = comparePassword = employ.comparePassword;

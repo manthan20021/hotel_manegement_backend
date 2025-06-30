@@ -24,8 +24,8 @@ const personRoute = require('./router/personRoute')
 const manuRoute = require('./router/manuRoute')
 
 //using routes
-app.use('/', personRoute)
-app.use('/', locelAuthMiddleware, manuRoute)
+app.use('/', locelAuthMiddleware, personRoute)
+app.use('/', manuRoute)
 
 
 //home server route

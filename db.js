@@ -1,6 +1,5 @@
-//DATABASE CONECTION
 const mongoose = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
 
 const mongoUrlLocal = process.env.MONGO_URL_LOCAL
 //const mongoUrl = process.env.MONGO_URI
