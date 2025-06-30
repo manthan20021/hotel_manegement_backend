@@ -7,7 +7,7 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       // Find the user by username
-      let user = await person.findOne({ username });
+      let user = await person.findOne({ username: username });
       
       // If user not found, return false
       if (!user) {
